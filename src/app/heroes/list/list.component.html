@@ -1,0 +1,28 @@
+<h3>Listado de Heroes</h3>
+<!-- Este *ngIf oculta el h3 cuando no hay nada que borrar -->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Heroe Borrado <small class="text-danger">{{deletedHero}}</small></h3>
+</div>
+
+<!--ng-template es como un div, pero sin que se crea en HTML
+#El numeral#, hace referencia al else de arriba-->
+<ng-template #nothingWasDeleted>
+  <h3>No ha borrado NADA.</h3>
+</ng-template>
+
+
+
+<button
+*ngIf="heroNames.length"
+(click)="removeLastHero()"
+class="btn btn-outline-danger">
+  Borrar ultimo Heroe
+</button>
+
+
+<ul class="mt-2 list-group">
+  <!--+ngfor, lo que hace es un barrido del arreglo que esta en el component.ts -->
+  <li
+  *ngFor="let name of heroNames"
+  class="list-group-item">{{name}}</li>
+</ul>
