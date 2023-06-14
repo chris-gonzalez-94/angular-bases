@@ -1,0 +1,27 @@
+<h4>Agregar Personaje</h4>
+
+  <form class="row" (ngSubmit)="emitCharacter()">
+  <!-- Para usar un [(ngModul)], primero se debe importar FormModule
+  en los modulos, ya que se importo, si o si, se tiene que agregar
+el nombre de la variable que se usaram en este caso es name y power -->
+  <input
+  type="text"
+  [(ngModel)]="character.name"
+  name="name"
+  class="form-comtrol mb-2"
+  placeholder="Nombre del personaje">
+
+  <input
+  type="number"
+  [(ngModel)]="character.power"
+  name="power"
+  class="form-comtrol mb-2"
+  placeholder="Poder">
+
+  <button
+  type="submit"
+  class="btn btn-primary"
+  >Agregar</button>
+
+  <pre>{{character | json}}</pre>
+</form>

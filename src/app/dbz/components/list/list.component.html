@@ -1,0 +1,44 @@
+<h4>Listado</h4>
+  <ul class="list-group">
+    <!-- <li class="list-group-item">Krillin - 500</li> -->
+    <!-- En el ngfor, las variables estan a la izquierda y a la derecha estan el arreglo-->
+    <!-- firts, last, even son palabras reservadas de typescript
+    index = indice
+    firts = primero
+    last = segundo
+    even = si es par
+    odd = no es par-->
+    <!-- [ngClass]="" nos ayuda añadir clases de manera condicional como tipo if, a su vez las llaves cuadradas[] no indica que angular tendra el control
+    y no el html-->
+
+    <li
+    *ngFor="let character of characterList;
+            let i = index;
+            let isFirst = first;
+            let isLast = last;
+            let isEven = even;
+            let isOdd = odd"
+    class="list-group-item d-flex justify-content-between aling align-items"
+    [ngClass]="{
+      'list-group-item-dark': isLast,
+      'list-group-item-primary': isEven
+
+    }">
+    <!-- i+1, muestra el numero del listado -->
+    <div>
+      <span class="text-primary">{{i+1}}.- </span>
+
+      <span>{{character.name}} - </span>
+
+      <strong>Power: </strong>
+
+      <span>{{character.power}}</span>
+    </div>
+    <button (click)="onDeleteCharacter(character.id)" class="btn btn-danger">X</button>
+    <!-- PAra saber si es el primero de unalista -->
+    <!-- <span> El primero {{isFirst}} </span>
+    <span> El primero {{isLast}} </span>
+    <span> Es par {{isEven}} </span>
+    <span> Es inpar {{isOdd}} </span> -->
+  </li>
+  </ul>
